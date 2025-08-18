@@ -87,7 +87,7 @@ import React, { useState } from "react";
 import { AlertCircle } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import Filter from "./Filter"
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/Skeleton";
 import { Button } from "@/components/ui/button";
 import SearchResult from "./SearchResult";
 import { useGetSearchCourseQuery } from "../../features/api/courseApi";
