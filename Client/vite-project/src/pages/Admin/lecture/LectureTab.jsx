@@ -130,7 +130,7 @@ import {
 import { useParams } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 
-const MEDIA_API = "https://mern-project-e085.onrender.com/api/v1/media";
+const MEDIA_API = "https://mern-project-1-sglv.onrender.com/api/v1/media";
 
 const LectureTab = () => {
   const [lectureTitle, setLectureTitle] = useState("");

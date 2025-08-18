@@ -2,7 +2,7 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { userLoggedIn, userLoggedOut } from "../authSlice";
 
-const USER_API = "https://mern-project-e085.onrender.com/api/v1/user";
+const USER_API = "https://mern-project-1-sglv.onrender.com/api/v1/user";
 export const authapi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
