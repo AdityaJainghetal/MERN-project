@@ -176,6 +176,7 @@ export const stripeWebhook = async (req, res) => {
       }).populate({
         path: "courseId",
       });
+      console.log(purchase,"purchase")
 
       if (!purchase) {
         return res.status(404).json({ message: "Purchase not found" });
@@ -209,6 +210,7 @@ export const stripeWebhook = async (req, res) => {
       );
 
       res.status(200).json({ received: true });
+      
     } catch (error) {
       console.error("Stripe Webhook Handler Error:", error);
       res.status(500).send("Internal Server Error");

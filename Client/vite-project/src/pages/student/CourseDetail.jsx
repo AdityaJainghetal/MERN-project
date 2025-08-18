@@ -423,20 +423,32 @@ const CourseDetail = () => {
         <div className="w-full lg:w-1/3">
           <Card>
             <CardContent className="p-4 flex flex-col">
-              <div className="w-full aspect-video mb-4 bg-gray-200 flex items-center justify-center text-sm text-gray-600">
-                <ReactPlayer
-                width="100%"
+              {/* <div className="w-full aspect-video mb-4 bg-gray-200 flex items-center justify-center text-sm text-gray-600">
+             
+                <video
+                  width="100%"
                 height={"100%"}
                 // url={course?.lecture[0]?.videoUrl}
-                url={course?.lectures?.[0]?.videoUrl}
+                url={course?.lectures?.[0].videoUrl}
 
-                controls={true}
+              controls
+                
+                
                 />
-              </div>
+              </div> */}
 
-              <h1>Lecture title</h1>
+<div className="w-full aspect-video mb-4 bg-gray-200 flex items-center justify-center text-sm text-gray-600">
+  <video
+    width="100%"
+    height="100%"
+    src={course?.lectures?.[0]?.videoUrl} // ✅ Correct attribute
+    controls
+  />
+</div>
+
+              <h1>{course?.lectures[0]?.lectureTitle}</h1>
               <Separator className="my-2" />
-              <h1 className="text-lg md:text-xl font-semibold">Course Price</h1>
+              <h1 className="text-lg md:text-xl font-semibold">Course Price : {course?.coursePrice}</h1>
             </CardContent>
             <CardFooter className="flex justify-center p-4">
               {purchased ? (
