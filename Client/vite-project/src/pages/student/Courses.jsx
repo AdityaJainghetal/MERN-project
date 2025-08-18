@@ -98,7 +98,9 @@
 
 
 import React from "react";
-import  Skeleton  from "@/components/ui/Skeleton";
+// import  Skeleton  from "@/components/ui/Skeleton";
+import { Skeleton } from "@/components/ui/Skeleton";
+
 import Course from "./Course";
 import { useGetPublishedCourseQuery } from "../../features/api/courseApi";
 
