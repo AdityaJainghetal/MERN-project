@@ -130,7 +130,7 @@ import {
 import { useParams } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 
-const MEDIA_API = "http://localhost:8080/api/v1/media";
+const MEDIA_API = "https://mern-project-e085.onrender.com/api/v1/media";
 
 const LectureTab = () => {
   const [lectureTitle, setLectureTitle] = useState("");
@@ -142,19 +142,15 @@ const LectureTab = () => {
   const params = useParams();
   const { courseId, lectureId } = params;
 
-
-  const {data:lectureData} = useGetLectureByIdQuery(lectureId);
+  const { data: lectureData } = useGetLectureByIdQuery(lectureId);
   const lecture = lectureData?.lecture;
-  
 
-  useEffect(()=>{
-    if(lecture){
-      setLectureTitle(lecture.lectureTitle),
-      setIsFree(lecture, isPreviewFree);
-      setUploadVideoInfo(lecture.videoInfo)
+  useEffect(() => {
+    if (lecture) {
+      setLectureTitle(lecture.lectureTitle), setIsFree(lecture, isPreviewFree);
+      setUploadVideoInfo(lecture.videoInfo);
     }
-  },[lecture])
-
+  }, [lecture]);
 
   const [editLecture, { data, isLoading, error, isSuccess }] =
     useEditLectureMutation();
@@ -299,12 +295,14 @@ const LectureTab = () => {
         {/* Update Button */}
         <div className="mt-4">
           <Button disbaled={isLoading} onClick={editLectureHandler}>
-            {
-              isLoading ? <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
-              Please wait
-              </> : "Udpate Lecture"
-            }
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Please wait
+              </>
+            ) : (
+              "Udpate Lecture"
+            )}
           </Button>
         </div>
       </CardContent>
