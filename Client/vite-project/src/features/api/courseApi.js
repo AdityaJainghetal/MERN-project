@@ -1,6 +1,6 @@
 // import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// const COURSE_API = "https://mern-project-3-49vb.onrender.com/api/v1/course";
+// const COURSE_API = "http://localhost:8080/api/v1/course";
 
 // export const courseApi = createApi({
 //   reducerPath: "courseApi", // ✅ fixed typo
@@ -23,7 +23,7 @@
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const COURSE_API = "https://mern-project-3-49vb.onrender.com/api/v1/course";
+const COURSE_API = "http://localhost:8080/api/v1/course";
 
 export const courseApi = createApi({
   reducerPath: "courseApi",
@@ -49,25 +49,6 @@ export const courseApi = createApi({
       }),
       providesTags: ["Refetch_Creator_Course"],
     }),
-
-    // getSearchCourse: builder.query({
-    //   query: ({ searchQuery, categories, sortByPrice }) => {
-    //     let queryString = `/search?query=${encodeURIComponent(searchQuery)}`;
-
-    //     if (categories && categories.length > 0) {
-    //       const categoriesString = categories.map(encodeURIComponent).json(",");
-    //       queryString += `&categories= ${categoriesString}`;
-    //     }
-
-    //     if (sortByPrice) {
-    //       queryString += `&sortByPrice= ${encodeURIComponent(sortByPrice)}`;
-    //     }
-    //     return {
-    //       url:queryString,
-    //       method:"GET",
-    //     }
-    //   },
-    // }),
 
     getSearchCourse: builder.query({
       query: ({ searchQuery, categories, sortByPrice }) => {
