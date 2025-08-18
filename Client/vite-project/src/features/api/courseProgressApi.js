@@ -1,6 +1,6 @@
 // import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// const COURSE_PURCHASE_API = "https://mern-project-1-sglv.onrender.com/api/v1/progress";
+// const COURSE_PURCHASE_API = "http://localhost:8080/api/v1/progress";
 
 // export const courseProgressApi = createApi({
 //   reducerPath: "courseProgressApi",
@@ -50,8 +50,7 @@
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const COURSE_PROGRESS_API =
-  "https://mern-project-1-sglv.onrender.com/api/v1/progress";
+const COURSE_PROGRESS_API = "http://localhost:8080/api/v1/progress";
 
 export const courseProgressApi = createApi({
   reducerPath: "courseProgressApi",

@@ -1,6 +1,6 @@
 // import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// const COURSE_API = "https://mern-project-1-sglv.onrender.com/api/v1/course";
+// const COURSE_API = "http://localhost:8080/api/v1/course";
 
 // export const courseApi = createApi({
 //   reducerPath: "courseApi", // ✅ fixed typo
@@ -23,7 +23,7 @@
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const COURSE_API = "https://mern-project-1-sglv.onrender.com/api/v1/course";
+const COURSE_API = "http://localhost:8080/api/v1/course";
 
 export const courseApi = createApi({
   reducerPath: "courseApi",

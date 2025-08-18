@@ -36,13 +36,6 @@ app.use(
 );
 
 
-// app.get("/home",(_,res)=>{
-//     res.status(200).json({
-//         success:true,
-//         message:"Hello i am coming from backend"
-//     })
-// })
-
 app.listen(PORT, () => {
   console.log(`Server listen at port ${PORT}`);
 });
