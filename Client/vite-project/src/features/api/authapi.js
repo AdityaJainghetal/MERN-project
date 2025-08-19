@@ -1,13 +1,97 @@
+// import { fetchBaseQuery } from "@reduxjs/toolkit/query";
+// import { createApi } from "@reduxjs/toolkit/query/react";
+// import { userLoggedIn, userLoggedOut } from "../authSlice";
+
+// const USER_API = "https://mern-project-5-mslw.onrender.com/api/v1/user";
+// export const authapi = createApi({
+//   reducerPath: "authApi",
+//   baseQuery: fetchBaseQuery({
+//     baseUrl: USER_API,
+//     credentials: "include",
+//   }),
+//   endpoints: (builder) => ({
+//     registerUser: builder.mutation({
+//       query: (inputData) => ({
+//         url: "register",
+//         method: "POST",
+//         body: inputData,
+//       }),
+//     }),
+
+//     loginUser: builder.mutation({
+//       query: (inputData) => ({
+//         url: "login",
+//         method: "POST",
+//         body: inputData,
+//       }),
+//       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+//         try {
+//           const result = await queryFulfilled;
+//           dispatch(userLoggedIn({ user: result.data.user }));
+//         } catch (error) {
+//           console.log(error);
+//         }
+//       },
+//     }),
+//     logoutUser: builder.mutation({
+//       query: () => ({
+//         url: "logout",
+//         method: "GET",
+//       }),
+//       async onQueryStarted(_, { queryFulfilled, dispatch }) {
+//         try {
+//           dispatch(userLoggedOut());
+//         } catch (error) {
+//           console.log(error);
+//         }
+//       },
+//     }),
+
+//     loadUser: builder.query({
+//       query: () => ({
+//         url: "profile",
+//         method: "GET",
+//       }),
+//       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+//         try {
+//           const result = await queryFulfilled;
+//           dispatch(userLoggedIn({ user: result.data.user }));
+//         } catch (error) {
+//           console.log(error);
+//         }
+//       },
+//     }),
+//     updateUser: builder.mutation({
+//       query: (formData) => ({
+//         url: "profile/update",
+//         method: "PUT",
+//         body: formData,
+//         credentials: "include",
+//       }),
+//     }),
+//   }),
+// });
+
+// export const {
+//   useRegisterUserMutation,
+//   useLoginUserMutation,
+//   useLogoutUserMutation,
+//   useLoadUserQuery,
+//   useUpdateUserMutation,
+// } = authapi;
+
+
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { userLoggedIn, userLoggedOut } from "../authSlice";
 
 const USER_API = "https://mern-project-5-mslw.onrender.com/api/v1/user";
+
 export const authapi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: USER_API,
-    credentials: "include",
+    credentials: "include", // ✅ cookie always include hogi
   }),
   endpoints: (builder) => ({
     registerUser: builder.mutation({
@@ -33,13 +117,15 @@ export const authapi = createApi({
         }
       },
     }),
+
     logoutUser: builder.mutation({
       query: () => ({
         url: "logout",
-        method: "GET",
+        method: "POST", // ✅ better to use POST instead of GET
       }),
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
+          await queryFulfilled;
           dispatch(userLoggedOut());
         } catch (error) {
           console.log(error);
@@ -61,12 +147,12 @@ export const authapi = createApi({
         }
       },
     }),
+
     updateUser: builder.mutation({
       query: (formData) => ({
         url: "profile/update",
         method: "PUT",
         body: formData,
-        credentials: "include",
       }),
     }),
   }),

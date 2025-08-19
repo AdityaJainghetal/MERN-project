@@ -75,12 +75,37 @@ export const login = async (req, res) => {
     });
   }
 };
+// export const logout = async (_, res) => {
+//   try {
+//     return res.status(200).cookie("token", "", { maxAge: 0 }).json({
+//       message: "Logged out successfully",
+//       success: true,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(500).json({
+//       success: false,
+//       message: "Failed to logout",
+//     });
+//   }
+// };
+
+
+
 export const logout = async (_, res) => {
   try {
-    return res.status(200).cookie("token", "", { maxAge: 0 }).json({
-      message: "Logged out successfully",
-      success: true,
-    });
+    return res
+      .status(200)
+      .cookie("token", "", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // true in production
+        sameSite: "none", // must match login cookie
+        expires: new Date(0), // immediately expire cookie
+      })
+      .json({
+        message: "Logged out successfully",
+        success: true,
+      });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
@@ -89,6 +114,7 @@ export const logout = async (_, res) => {
     });
   }
 };
+
 export const getUserProfile = async (req, res) => {
   try {
     const userId = req.id; // ✅ Corrected: req._id ❌ → req.id ✅
