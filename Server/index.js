@@ -26,12 +26,24 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: true,
+//   })
+// );
+
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173", // local development
+      "https://mern-project-am1o.vercel.app" // deployed frontend
+    ],
     credentials: true,
   })
 );
+
 app.use("/api/v1/media", mediaRoute);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/course", courseRoute);
