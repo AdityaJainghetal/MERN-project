@@ -63,6 +63,8 @@ export const login = async (req, res) => {
       });
     }
 
+    
+
     // Send token using your generateToken function
     generateToken(res, user, `Welcome back ${user.name}`);
   } catch (error) {
